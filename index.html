@@ -18,16 +18,39 @@
         th.th-sort-desc::after {
             content: "▼";
         }
+        #toggleButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #009879;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #toggleButton:hover {
+            background-color: #007f67;
+        }
+        #table1 {
+            font-family: sans-serif;
+        }
+        #table2 {
+            font-family: sans-serif;
+        }
     </style>
 </head>
 <body>
     <h1 align="left" style="font-family: sans-serif;"><a href="https://checktmow.github.io/homepage/">Home</a></h1>
     <h1 align="center" style="font-family: sans-serif;">ESO Offseason Overwatch League Stats</h1>
+    <button id="toggleButton" onclick="toggleTables('table','table','toggleButton')">Show Per 10 Stats</button>
+    <div id="main" class="main">
     <div class="tabs">
         <input type="radio" class="tabs__radio" name="tabs-example" id="tab1" checked>
         <label for="tab1" class="tabs__label">ALL</label>
         <div class="tabs__content">
-            <table width="1825" bgcolor="#009879" class="table-sortable" style="margin-bottom: 75px;">
+            <table id="table1" width="1825" bgcolor="#009879" class="table-sortable" style="margin-bottom: 75px;">
                 <thead style="color: white;" align="center">
                     <tr>
                         <th width="200">Team</th>
@@ -35,11 +58,11 @@
                         <th width="200">Final Blows</th>
                         <th width="200">Deaths</th>
                         <th width="235">Final Blows/Deaths</th>
-                        <th width="210">Damage Dealt</th>
-                        <th width="225">Damage Taken</th>
-                        <th width="245">Damage Blocked</th>
+                        <th width="220">Damage Dealt</th>
+                        <th width="230">Damage Taken</th>
+                        <th width="250">Damage Blocked</th>
                         <th width="210">Healing Done</th>
-                        <th width="220">Ultimates Used</th>
+                        <th width="230">Ultimates Used</th>
                         <th width="200">Time Played</th>
                     </tr>
                 </thead>
@@ -580,7 +603,7 @@
                 </tbody>
             </table>
             <!-- Duplicate Table -->
-            <table width="1825" bgcolor="#009879" class="table-sortable">
+            <table id="table2" width="1825" bgcolor="#009879" class="table-sortable" style="display:none;">
                 <thead style="color: white;" align="center">
                     <tr>
                         <th width="228">Team</th>
@@ -1053,7 +1076,7 @@
         <input type="radio" class="tabs__radio" name="tabs-example" id="tab2">
         <label for="tab2" class="tabs__label">Tank</label>
         <div class="tabs__content">   
-            <table width="1825" bgcolor="#009879" class="table-sortable" style="margin-bottom: 75px;">
+            <table id="table3" width="1825" bgcolor="#009879" class="table-sortable" style="margin-bottom: 75px;">
                 <thead style="color: white;" align="center">
 
                     <tr>
@@ -1181,7 +1204,7 @@
                 </tbody>
             </table>
             <!-- Duplicate Table -->
-            <table width="1825" bgcolor="#009879" class="table-sortable">
+            <table id="table4" width="1825" bgcolor="#009879" class="table-sortable" style="display:none;">
                 <thead style="color: white;" align="center">
                     <tr>
                         <th width="228">Team</th>
@@ -1291,7 +1314,7 @@
         <input type="radio" class="tabs__radio" name="tabs-example" id="tab3">
         <label for="tab3" class="tabs__label">DPS</label>
         <div class="tabs__content">
-            <table width="1825" bgcolor="#009879" class="table-sortable" style="margin-bottom: 75px;">
+            <table id="table1" width="1825" bgcolor="#009879" class="table-sortable" style="margin-bottom: 75px;">
                 <thead style="color: white;" align="center">
                     <tr>
                         <th width="200">Team</th>
@@ -1507,7 +1530,7 @@
                 </tbody>
             </table>
             <!-- Duplicate Table -->
-            <table width="1825" bgcolor="#009879" class="table-sortable">
+            <table id="table2" width="1825" bgcolor="#009879" class="table-sortable" style="display:none;">
                 <thead style="color: white;" align="center">
                     <tr>
                         <th width="260">Team</th>
@@ -1688,7 +1711,7 @@
         <input type="radio" class="tabs__radio" name="tabs-example" id="tab4">
         <label for="tab4" class="tabs__label">Support</label>
         <div class="tabs__content">
-            <table width="1825" bgcolor="#009879" class="table-sortable" style="margin-bottom: 75px;">
+            <table id="table1" width="1825" bgcolor="#009879" class="table-sortable" style="margin-bottom: 75px;">
                 <thead style="color: white;" align="center">
                     <tr>
                         <th width="200">Team</th>
@@ -1911,7 +1934,7 @@
                 </tbody>
             </table>
             <!-- Duplicate Table -->
-            <table width="1825" bgcolor="#009879" class="table-sortable">
+            <table id="table2" width="1825" bgcolor="#009879" class="table-sortable" style="display:none;">
                 <thead style="color: white;" align="center">
                     <tr>
                         <th width="200">Team</th>
@@ -2099,6 +2122,24 @@
             </table>
         </div>
     </div>
+</div>
     <script src="src/tablesort.js"></script>
+    <script>
+        function toggleTables() {
+            var table1 = document.getElementById('table1');
+            var table2 = document.getElementById('table2');
+            var button = document.getElementById('toggleButton');
+            
+            if (table1.style.display === 'none') {
+                table1.style.display = 'table';
+                table2.style.display = 'none';
+                button.textContent = 'Show Per 10 Stats';
+            } else {
+                table1.style.display = 'none';
+                table2.style.display = 'table';
+                button.textContent = 'Show Total Stats';
+            }
+        }
+    </script>
 </body>
 </html>
