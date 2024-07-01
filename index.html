@@ -1078,7 +1078,6 @@
         <div class="tabs__content">   
             <table id="table3" width="1825" bgcolor="#009879" class="table-sortable" style="margin-bottom: 75px;">
                 <thead style="color: white;" align="center">
-
                     <tr>
                         <th width="200">Team</th>
                         <th width="200">Player</th>
@@ -1314,7 +1313,7 @@
         <input type="radio" class="tabs__radio" name="tabs-example" id="tab3">
         <label for="tab3" class="tabs__label">DPS</label>
         <div class="tabs__content">
-            <table id="table1" width="1825" bgcolor="#009879" class="table-sortable" style="margin-bottom: 75px;">
+            <table id="table5" width="1825" bgcolor="#009879" class="table-sortable" style="margin-bottom: 75px;">
                 <thead style="color: white;" align="center">
                     <tr>
                         <th width="200">Team</th>
@@ -1530,7 +1529,7 @@
                 </tbody>
             </table>
             <!-- Duplicate Table -->
-            <table id="table2" width="1825" bgcolor="#009879" class="table-sortable" style="display:none;">
+            <table id="table6" width="1825" bgcolor="#009879" class="table-sortable" style="display:none;">
                 <thead style="color: white;" align="center">
                     <tr>
                         <th width="260">Team</th>
@@ -1711,7 +1710,7 @@
         <input type="radio" class="tabs__radio" name="tabs-example" id="tab4">
         <label for="tab4" class="tabs__label">Support</label>
         <div class="tabs__content">
-            <table id="table1" width="1825" bgcolor="#009879" class="table-sortable" style="margin-bottom: 75px;">
+            <table id="table7" width="1825" bgcolor="#009879" class="table-sortable" style="margin-bottom: 75px;">
                 <thead style="color: white;" align="center">
                     <tr>
                         <th width="200">Team</th>
@@ -1934,7 +1933,7 @@
                 </tbody>
             </table>
             <!-- Duplicate Table -->
-            <table id="table2" width="1825" bgcolor="#009879" class="table-sortable" style="display:none;">
+            <table id="table8" width="1825" bgcolor="#009879" class="table-sortable" style="display:none;">
                 <thead style="color: white;" align="center">
                     <tr>
                         <th width="200">Team</th>
@@ -2126,18 +2125,19 @@
     <script src="src/tablesort.js"></script>
     <script>
         function toggleTables() {
-            var table1 = document.getElementById('table1');
-            var table2 = document.getElementById('table2');
             var button = document.getElementById('toggleButton');
-            
-            if (table1.style.display === 'none') {
-                table1.style.display = 'table';
-                table2.style.display = 'none';
-                button.textContent = 'Show Per 10 Stats';
-            } else {
-                table1.style.display = 'none';
-                table2.style.display = 'table';
-                button.textContent = 'Show Total Stats';
+            for (var i = 1; i <= 8; i += 2) {
+                var table1 = document.getElementById('table' + i);
+                var table2 = document.getElementById('table' + (i + 1));
+                if (table1.style.display === 'none') {
+                    table1.style.display = 'table';
+                    table2.style.display = 'none';
+                    button.textContent = 'Show Per 10 Stats';
+                } else {
+                    table1.style.display = 'none';
+                    table2.style.display = 'table';
+                    button.textContent = 'Show Total Stats';
+                }
             }
         }
     </script>
